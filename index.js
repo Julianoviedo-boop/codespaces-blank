@@ -1,6 +1,7 @@
 import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
 
 const canvaChico = document.getElementById("chico")
+const switchMode = document.getElementById("switchMode")
 const canvas = document.getElementById("canvas");
 const canvasMotion = document.getElementById("canvasMotion");
 const btnPrev = document.getElementById("btnPrev");
@@ -88,7 +89,7 @@ motionAnim.addEventListener("pause",()=>{
 
 const zombieAnimation = new DotLottie({
   canvas:canvaChico,
-  src:"./assets/chico-zombie.lottie",
+  src:"./assets/chico-zombie-v3-themes.lottie",
   autoplay:false
 })
 
@@ -97,6 +98,8 @@ zombieAnimation.addEventListener("load",()=>{
   if(cargo){
     zombieAnimation.stateMachineStart()
     console.log("se inicio la maquina")
+    console.log("¿Se aplicó el tema?", zombieAnimation.setTheme("light"));
+    console.log("temas disponibles:", zombieAnimation.manifest?.themes)
   }else{
     console.log("no se inicio la maquina")
   }
@@ -104,4 +107,19 @@ zombieAnimation.addEventListener("load",()=>{
 
 zombieAnimation.addEventListener("loadError",(e)=>{
   console.log("hubo un error")
+})
+
+
+
+let modoLight = false
+
+
+switchMode.addEventListener("click",()=>{
+  modoLight = !modoLight
+  if (modoLight){
+    document.body.classList.toggle("light",modoLight)
+    zombieAnimation.setTheme("light")
+  }else{
+    zombieAnimation.resetTheme()
+  }
 })

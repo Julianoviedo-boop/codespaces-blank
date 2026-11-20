@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@custom-variant light (&:where(.light, .light *));
 @theme {
     --color-secondary:#010409;
     --color-principal:#0d1117;
