@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Lottie Animation</title>
+    <link rel="stylesheet" href="./assets/output.css">
+  </head>
+  <body class="p-0 m-0 bg-black text-amber-50 items-center">
+    <header class="header-ptf flex flex-row justify-around bg-principal p-4 mb-5">
+      <h2 class="text-xl font-bold">Julian David Oviedo Moreno</h2>
+      <nav>
+        <ul class="flex flex-row gap-4">
+          <li class="list-none cursor-pointer scale-100 transition duration-300 ease-in-out hover:scale-110">contactame</li>
+          <li class="list-none cursor-pointer scale-100 transition duration-300 ease-in-out hover:scale-110">potfolio</li>
+          <li class="list-none cursor-pointer scale-100 transition duration-300 ease-in-out hover:scale-110">sobre mi</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class=" flex flex-col items-center justify-center gap-4">
+      <div class="flex flex-col justify-center items-center">
+        <h1 class="text-4xl">Programador y productor multimedia web</h3>
+        <div class="flex flex-row items-center justify-center">
+          <img src="julian-oviedo.png" alt="Julian Oviedo">
+          <div class="flex flex-col max-w-2xl">
+            <h2 class="text-3xl mb-8">Mi Experiencia laboral</h2>
+            <span class="text-ellipsis">
+              Soy Julian David Oviedo, Tecnólogo en Desarrollo Multimedia y Web del SENA (2023–2025). Durante mi formación y mis prácticas trabajé con JavaScript, HTML, CSS y React, y he construido proyectos propios conectando interfaces con APIs REST y backends en Node/Express, usando Git y GitHub para control de versiones.
+            </span>
+          </div>
+        </div>
+      </div>  
+      </section>
+      <section>
+        <div class="w-dvw flex justify-center items-center  rounded-xl">
+        <div class="bg-blue-900 border-amber-50 pl-6 pr-6 pt-4 pb-4 m-4 flex flex-col gap-3.5">
+          <h2>CONTACTAME</h2>
+          <span> estoy dispuesto a trabajar para tu empresa como creador de paginas y sitios web</span>
+          <form action="" method="post" >
+            <div class="flex flex-col gap-2">
+              <hr class="border-2">
+              <label for="name">nombre de la empresa</label>
+            <input type="text" id="name" name="nombre" required class="border-2 border-indigo-50" >
+            <label for="correo">correo</label>
+            <input type="email" id="correo" name="correo" class="border-2 border-indigo-50" required>
+            <label for="comentarios">comentarios</label>
+            <textarea name="comentarios" id="comentarios" class="border-2 border-indigo-50"></textarea>
+            <div class="flex w-full items-center justify-center">
+              <button type="submit" class="rounded-s-md border-2 border-amber-50 w-23.5 cursor-pointer scale-100 transition duration-300 ease-in-out hover:scale-105">enviar</button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      </section>
+      <div class="divAnimation absolute right-0">
+        <canvas id="canvas" width="100" height="100"></canvas>
+      </div>
+      <section>
+        <div class="flex flex-col h-auto relative">
+      <canvas id="canvasMotion" height="300" width="300" ></canvas>
+        <button id="btnPrev" type="button" aria-label="Póster anterior" disabled class="text-5xl bg-amber-50 border-0 rounded-4xl text-black cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 p-5 absolute left-7.5 top-2/4">‹</button>
+        <button id="btnNext" type="button" aria-label="Póster siguiente" disabled class="text-5xl bg-amber-50 border-0 rounded-4xl text-black cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 p-5 absolute right-7.5 top-2/4">›</button>
+      
+    </div>
+      </section>
+    </main>
+    <canvas id="chico" style="width: 300px; height:300px;"></canvas>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
