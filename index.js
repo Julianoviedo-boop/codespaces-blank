@@ -40,6 +40,7 @@ function showPoster(index, play = true) {
 
   motionAnim.setMarker(poster.name);
   motionAnim.setFrame(poster.start);
+  console.log(poster.name)
   if (play) {
     motionAnim.play()
     };
@@ -116,6 +117,7 @@ zombieAnimation.addEventListener("load",()=>{
 console.log(temaDark)
 if (temaDark) {
   saveTheme('dark',false)
+  inputMode.setAttribute('checked')
 }else{
   inputMode.removeAttribute("checked")
   saveTheme('light',true)
@@ -124,6 +126,7 @@ if (temaDark) {
   }else{
     console.log("no se inicio la maquina")
   }
+  console.log(zombieAnimation.manifest?.themes);
 })
 
 zombieAnimation.addEventListener("loadError",(e)=>{
@@ -133,11 +136,12 @@ zombieAnimation.addEventListener("loadError",(e)=>{
 switchMode.addEventListener("click",(e)=>{
    e.stopPropagation()
    if (localStorage.getItem('tema') == 'dark'){
-    saveTheme('light',true)
+    saveTheme('light',true);
+    inputMode.removeAttribute('checked')
    }else{
      if(localStorage.getItem('tema') == 'light'){
       saveTheme('dark',false)
+      inputMode.setAttribute('checked')
    }
    }
-   console.log("click recibido")
 })
