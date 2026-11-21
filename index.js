@@ -1,8 +1,10 @@
+'use strict'
 import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
 
 const canvaChico = document.getElementById("chico")
-const switchMode = document.getElementById("switchMode")
+const switchMode = document.getElementById("botonSwitch")
 const canvas = document.getElementById("canvas");
+const inputMode = document.getElementById("toggle")
 const canvasMotion = document.getElementById("canvasMotion");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
@@ -92,14 +94,33 @@ const zombieAnimation = new DotLottie({
   src:"./assets/chico-zombie-v3-themes.lottie",
   autoplay:false
 })
-
+const saveTheme = (modo,isLight) =>{
+  localStorage.setItem('tema',modo)
+     document.body.classList.toggle('light',isLight)
+     if(isLight){
+       zombieAnimation.setTheme(modo)
+     }else{
+      zombieAnimation.resetTheme()
+     }
+}
+let existeModo = localStorage.getItem("tema") !== null
+if(existeModo === false){
+  localStorage.setItem('tema','dark')
+}
 zombieAnimation.addEventListener("load",()=>{
   const cargo = zombieAnimation.stateMachineLoad("StateMachine1")
   if(cargo){
     zombieAnimation.stateMachineStart()
     console.log("se inicio la maquina")
-    console.log("¿Se aplicó el tema?", zombieAnimation.setTheme("light"));
-    console.log("temas disponibles:", zombieAnimation.manifest?.themes)
+    let temaDark = localStorage.getItem('tema') == 'dark' ? true:false; 
+console.log(temaDark)
+if (temaDark) {
+  saveTheme('dark',false)
+}else{
+  inputMode.removeAttribute("checked")
+  saveTheme('light',true)
+}
+
   }else{
     console.log("no se inicio la maquina")
   }
@@ -109,17 +130,14 @@ zombieAnimation.addEventListener("loadError",(e)=>{
   console.log("hubo un error")
 })
 
-
-
-let modoLight = false
-
-
-switchMode.addEventListener("click",()=>{
-  modoLight = !modoLight
-  if (modoLight){
-    document.body.classList.toggle("light",modoLight)
-    zombieAnimation.setTheme("light")
-  }else{
-    zombieAnimation.resetTheme()
-  }
+switchMode.addEventListener("click",(e)=>{
+   e.stopPropagation()
+   if (localStorage.getItem('tema') == 'dark'){
+    saveTheme('light',true)
+   }else{
+     if(localStorage.getItem('tema') == 'light'){
+      saveTheme('dark',false)
+   }
+   }
+   console.log("click recibido")
 })
