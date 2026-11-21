@@ -8,6 +8,9 @@ const inputMode = document.getElementById("toggle")
 const canvasMotion = document.getElementById("canvasMotion");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
+const submitForm = document.getElementById("submitForm");
+const checkedForm = document.getElementById("checkedForm");
+const windowModal = document.getElementById("windowModal")
 const animation = new DotLottie({
   canvas:canvas,
   src: "https://lottie.host/dacc9ab7-cf86-4a3a-824e-e180e44d3d0e/pWza53mfJW.lottie",
@@ -144,4 +147,25 @@ switchMode.addEventListener("click",(e)=>{
       inputMode.setAttribute('checked')
    }
    }
+});
+
+const checkedAnimation = new DotLottie({
+  canvas:checkedForm,
+  src: './assets/checkEjercicioV1.lottie',
+  autoplay:false,
+  loop : false
+})
+
+
+
+submitForm.addEventListener("click",(e)=>{
+  e.preventDefault()
+  windowModal.classList.replace('hidden','flex');
+  checkedAnimation.play()
+  console.log(windowModal)
+})
+
+checkedAnimation.addEventListener("complete",()=>{
+  checkedAnimation.stop()
+  windowModal.classList.replace('flex','hidden')
 })

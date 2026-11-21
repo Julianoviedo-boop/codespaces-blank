@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./assets/output.css">
   </head>
   <body class="p-0 m-0 bg-black text-amber-50 items-center light:bg-amber-50 light:text-black">
-    <header class="header-ptf flex flex-row justify-around bg-principal p-4 mb-5">
+    <header class="header-ptf flex flex-row justify-around bg-principal p-4 mb-5 relative z-10">
       <h2 class="text-xl font-bold">Julian David Oviedo Moreno</h2>
       <nav>
         <ul class="flex flex-row gap-4">
@@ -17,7 +17,7 @@
         </ul>
       </nav>
     </header>
-    <main>
+    <main class="relative z-10">
       <section class=" flex flex-col items-center justify-center gap-4">
       <div class="flex flex-col justify-center items-center">
         <h1 class="text-4xl">Programador y productor multimedia web</h3>
@@ -47,7 +47,7 @@
             <label for="comentarios">comentarios</label>
             <textarea name="comentarios" id="comentarios" class="border-2 border-indigo-50"></textarea>
             <div class="flex w-full items-center justify-center">
-              <button type="submit" class="rounded-s-md border-2 border-amber-50 w-23.5 cursor-pointer scale-100 transition duration-300 ease-in-out hover:scale-105">enviar</button>
+              <button type="submit" class="rounded-s-md border-2 border-amber-50 w-23.5 cursor-pointer scale-100 transition duration-300 ease-in-out hover:scale-105" id="submitForm">enviar</button>
             </div>
             </div>
           </form>
@@ -126,6 +126,11 @@
         </label>
       </section>
     </main>
+    <div id="windowModal" class="bg-amber-50/40 w-dvw h-dvh fixed hidden z-40 top-0 left-0 items-center justify-center">
+      <div id="checkedContainer" class="flex bg-amber-50 w-2xs h-72 relative z-50">
+        <canvas id="checkedForm" style="width:300px; height:300px;"></canvas>
+      </div>
+    </div>
     <canvas id="chico" style="width: 300px; height:300px;"></canvas>
     <script type="module" src="./index.js"></script>
   </body>
