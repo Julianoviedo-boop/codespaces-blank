@@ -162,7 +162,7 @@ checkedAnimation.addEventListener("complete",()=>{
 
 const multimediaAnimation = new DotLottie({
   canvas:claquetaCanva,
-  src:"./assets/claqueta-julian-V3.lottie",
+  src:"./assets/claqueta-animacionV4-Intro.lottie",
   autoplay:true
 })
 console.log(multimediaAnimation)
