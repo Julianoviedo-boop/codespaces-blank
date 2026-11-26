@@ -11,6 +11,7 @@ const btnNext = document.getElementById("btnNext");
 const submitForm = document.getElementById("submitForm");
 const checkedForm = document.getElementById("checkedForm");
 const windowModal = document.getElementById("windowModal")
+const claquetaCanva = document.getElementById("claquetaModoNight");
 const animation = new DotLottie({
   canvas:canvas,
   src: "https://lottie.host/dacc9ab7-cf86-4a3a-824e-e180e44d3d0e/pWza53mfJW.lottie",
@@ -58,17 +59,6 @@ motionAnim.addEventListener("load", () => {
   }
   btnPrev.disabled = false;
   btnNext.disabled = false;
-  console.log("esta reproduciendose")
-  console.log(motionAnim.isPlaying)
-  console.log("------- esta cargado")
-  console.log(motionAnim.isLoaded)
-  console.log("-------actual frame")
-  console.log(motionAnim.currentFrame)
-  console.log("------total de frames")
-  console.log("-------------duracion")
-  console.log(motionAnim.duration)
-  console.log(motionAnim.mode)
-  console.log(motionAnim.mode)
   showPoster(0, false);
 });
 
@@ -120,7 +110,7 @@ zombieAnimation.addEventListener("load",()=>{
 console.log(temaDark)
 if (temaDark) {
   saveTheme('dark',false)
-  inputMode.setAttribute('checked')
+  inputMode.setAttribute('checked','checked');
 }else{
   inputMode.removeAttribute("checked")
   saveTheme('light',true)
@@ -168,4 +158,19 @@ submitForm.addEventListener("click",(e)=>{
 checkedAnimation.addEventListener("complete",()=>{
   checkedAnimation.stop()
   windowModal.classList.replace('flex','hidden')
+})
+
+const multimediaAnimation = new DotLottie({
+  canvas:claquetaCanva,
+  src:"./assets/claqueta-julian-V3.lottie",
+  autoplay:true
+})
+console.log(multimediaAnimation)
+
+multimediaAnimation.addEventListener("load",()=>{
+  const multCargo = multimediaAnimation.stateMachineLoad("StateMachine1");
+  console.log(multCargo)
+  if (multCargo){
+    console.log("se cargo la animacion de la claqueta")
+  }
 })
